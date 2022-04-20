@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!--SearchBar/>
-    <Header/>
+    <SearchBar @searchEmit="cercaFilm"/>
+    <!--Header/>
     <Main/-->
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 //import Header from './components/Header.vue';
 //import Main from'./components/Main.vue';
-//import SearchBar from '@/components/SearchBar.vue';
+import SearchBar from '@/components/SearchBar.vue';
 import axios from 'axios'
 export default {
   name: 'App',
@@ -17,24 +17,32 @@ export default {
     return{
       apiUrl:'https://api.themoviedb.org/3/search/',
       apiKey:'f60679ff520c286ee002906fb58e4dbb',
+      filmRichiesto:'',
       films:[]
     }
   },
   mounted(){
-    const query = "ritorno";
-    const params = {
-      api_Key: this.apiKey,
-      query,
-      language:'it_IT'
-    };
-    axios.get(this.apiUrl + 'movie' ,{params}).then((response) => {
+    const paramsObj = {
+        params: {
+          api_key: this.apiKey,
+          query: this.filmRichiesto,
+          language: 'it-IT'
+        }
+      };
+    axios.get(this.apiUrl + 'movie' ,{paramsObj}).then((response) => {
       console.log(response);
     }).catch((error) => {
       console.log(error);
     })
   },
+  methods:{
+    cercaFilm(filmRichiesto){
+      this.filmRichiesto = filmRichiesto;
+    }
+  },
   components: {
-   /* SearchBar,
+    SearchBar,
+    /*
     Header,
     Main*/
   }

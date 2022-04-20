@@ -1,13 +1,18 @@
 <template>
   <div>
-      <input type="text" v-model="query">
-      <button @click="queryApi">Cerca</button>
+      <input type="text" v-model="filmRichiesto">
+      <button @click="$emit('searchEmit',filmRichiesto)">Cerca</button>
   </div>
 </template>
 
 <script>
 export default {
-name:'SearchBar'
+name:'SearchBar',
+data(){
+    return{
+        filmRichiesto:''
+    }
+},
 }
 </script>
 
