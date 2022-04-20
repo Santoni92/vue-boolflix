@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <SearchBar @searchEmit="cercaFilm"/>
+    <div v-for="film in filmCercato" :key="film.id">
+      {{film.title}}
+    </div>
     <!--Header/>
     <Main/-->
   </div>
@@ -22,20 +25,35 @@ export default {
     }
   },
   mounted(){
-    const  params = {
-          api_key: this.apiKey,
-          query:'ritorno', //query: this.filmRichiesto,
-          language: 'it-IT'
-        }
-    axios.get(this.apiUrl + 'movie' ,{params}).then((response) => {
-      console.log(response);
-    }).catch((error) => {
-      console.log(error);
-    })
+    const params = {
+        api_key: this.apiKey,
+        query:'ritorno', //query: this.filmRichiesto,
+        language: 'it-IT'
+    }
+    const  config = {params};     
+    const url = this.apiUrl + 'movie';
+    axios.get( url, config).then((response) => {
+                                                  console.log(response);
+                                                  this.films = response.data.results;
+                                                  console.log(this.films[0]);
+                                                }).catch((error) => {
+                                                  console.log(error);
+                                                 })
   },
   methods:{
     cercaFilm(filmRichiesto){
       this.filmRichiesto = filmRichiesto;
+    }
+  },
+  computed:{
+    filmCercato(){
+      if(this.filmRichiesto === '')
+      {
+        return this.films;
+      }
+      return this.films.filter((item) =>{
+        return item.title.includes(this.filmRichiesto);
+      })
     }
   },
   components: {
