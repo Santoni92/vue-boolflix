@@ -25,7 +25,7 @@ export default {
     const paramsObj = {
         params: {
           api_key: this.apiKey,
-          query: this.filmRichiesto,
+          query:'ritorno', //query: this.filmRichiesto,
           language: 'it-IT'
         }
       };
