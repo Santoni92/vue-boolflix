@@ -22,14 +22,12 @@ export default {
     }
   },
   mounted(){
-    const paramsObj = {
-        params: {
+    const  params = {
           api_key: this.apiKey,
           query:'ritorno', //query: this.filmRichiesto,
           language: 'it-IT'
         }
-      };
-    axios.get(this.apiUrl + 'movie' ,{paramsObj}).then((response) => {
+    axios.get(this.apiUrl + 'movie' ,{params}).then((response) => {
       console.log(response);
     }).catch((error) => {
       console.log(error);
