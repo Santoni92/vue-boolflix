@@ -15,29 +15,46 @@ export default {
     return{
       apiUrl:'https://api.themoviedb.org/3/search/',
       apiKey:'f60679ff520c286ee002906fb58e4dbb',
-      films:[]
+      films:[],
+      series:[]
     }
   },
   methods:{
     cercaFilm(filmRichiesto){
-      console.log(filmRichiesto);
+      if(filmRichiesto.length > 0){
+         console.log('Ciò che HeaderComponent emette -->',filmRichiesto);
          const params = {
                           api_key: this.apiKey,
                           query: filmRichiesto,
                           language: 'it-IT'
                         }
-          const  config = {params};     
-         const url = this.apiUrl + 'movie';
+         const  config = {params};     
+         let url = this.apiUrl + 'movie';
+         //chiamata axios per i film
          axios.get( url, config).then((response) => {
-                                                    console.log(response);
+                                                    console.log('Risultato ritornatomi dalla chiamata api -->',response);
                                                     if(response.status === 200)
                                                     {
                                                       this.films = response.data.results;
-                                                      console.log(this.films[0]);
+                                                      console.log('array dei film -->',this.films);
+                                                      console.log('singolo film -->',this.films[0]);
                                                     }
                                                     }).catch((error) => {
                                                                          console.log(error);
                                                                         });
+         //chiamata axios per le serie tv
+         url = this.apiUrl + 'tv'
+         axios.get(url,config).then((response) => {
+           if(response.status === 200)
+           {
+             this.series = response.data.results;
+             console.log('array delle serie tv -->',this.series);
+             console.log('singola serie tv -->',this.series[0]);
+           }
+         }).catch((error) => {
+           console.log(error);
+         })
+      }
     }
   },
   components: {
