@@ -14,8 +14,8 @@
                   <p>{{ film.vote_average }}</p>
                   <div class="stellette">
                       <div v-for="m in 5" :key="m">
-                        <div v-if="m < Math.floor(film.vote_average / 2)"><i class="fa-solid fa-star"></i></div>
-                        <div v-else></div>
+                        <div v-if="m < Math.ceil(film.vote_average / 2)"><i class="fa-solid fa-star"></i></div>
+                        <div v-else><i class="fa-regular fa-star"></i></div>
                       </div>
                   </div>
               </div>
