@@ -5,7 +5,7 @@
           <div class="row">
               <div class="card" v-for="film in films" :key="film.id">
                   <div v-if="film.poster_path !== null">
-                      <img :src="'https://image.tmdb.org/t/p/' + 'w300/' + film.poster_path" :alt="film.title">
+                      <img :src="'https://image.tmdb.org/t/p/' + 'w780/' + film.poster_path" :alt="film.title">
                   </div>
                   <div v-else>Copertina non disponibile</div>
                   <h3>{{ film.title }}</h3>
@@ -23,6 +23,19 @@ export default {
     name:'FilmsList',
     props:{
         films:Array
+    },
+    data(){
+        return{
+                 "poster_sizes": [
+                                    "w92",
+                                    "w154",
+                                    "w185",
+                                    "w342",
+                                    "w500",
+                                    "w780",
+                                    "original"
+                                ],
+        }
     }
 }
 </script>
