@@ -1,19 +1,19 @@
 <template>
   <main>
-    <!--FilmList :films="films"/-->
+    <FilmList :films="films"/>
   </main>
 </template>
 
 <script>
-//import FilmList from './components/FilmList.vue'
+import FilmList from './FilmList.vue'
 export default {
     name:'MainComponent',
-   /* props:{
+    props:{
       films:Array
     },
     components:{
       FilmList
-    }*/
+    }
 
 }
 </script>
