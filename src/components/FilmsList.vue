@@ -5,13 +5,19 @@
           <div class="row">
               <div class="card" v-for="film in films" :key="film.id">
                   <div v-if="film.poster_path !== null">
-                      <img :src="'https://image.tmdb.org/t/p/' + 'w780/' + film.poster_path" :alt="film.title">
+                      <img :src="'https://image.tmdb.org/t/p/' + 'w92/' + film.poster_path" :alt="film.title">
                   </div>
                   <div v-else>Copertina non disponibile</div>
                   <h3>{{ film.title }}</h3>
                   <h4>{{ film.original_title }}</h4>
                   <p>{{ film.original_language }}</p>
                   <p>{{ film.vote_average }}</p>
+                  <div class="stellette">
+                      <div v-for="m in 5" :key="m">
+                        <div v-if="m < Math.floor(film.vote_average / 2)"><i class="fa-solid fa-star"></i></div>
+                        <div v-else></div>
+                      </div>
+                  </div>
               </div>
           </div>
       </div>
@@ -35,6 +41,9 @@ export default {
                                     "w780",
                                     "original"
                                 ],
+               // fattoreDiScala : 2, // (10/5)
+                //numeroTotaleStellette : 5, 
+               // numeroStellettePiene: Math.floor()
         }
     }
 }
@@ -57,5 +66,8 @@ export default {
                 }
             }
         }
+    }
+    .stellette{
+        display:flex;
     }
 </style>
