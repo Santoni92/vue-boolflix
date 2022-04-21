@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComponent @searchEmit="cercaFilm"/>
-    <MainComponent :films="films"/>
+    <MainComponent :films="films" :series="series"/>
   </div>
 </template>
 

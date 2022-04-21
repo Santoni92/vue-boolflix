@@ -1,18 +1,22 @@
 <template>
   <main>
-    <FilmList :films="films"/>
+    <FilmsList :films="films"/>
+    <SeriesList :series="series"/>
   </main>
 </template>
 
 <script>
-import FilmList from './FilmList.vue'
+import FilmsList from './FilmsList.vue'
+import SeriesList from './SeriesList.vue'
 export default {
     name:'MainComponent',
     props:{
-      films:Array
+      films:Array,
+      series:Array
     },
     components:{
-      FilmList
+      FilmsList,
+      SeriesList
     }
 
 }

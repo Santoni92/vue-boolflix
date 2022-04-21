@@ -16,7 +16,7 @@
 
 <script>
 export default {
-    name:'FilmList',
+    name:'FilmsList',
     props:{
         films:Array
     }
