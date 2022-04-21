@@ -4,6 +4,10 @@
       <div class="container">
           <div class="row">
               <div class="card" v-for="film in films" :key="film.id">
+                  <div v-if="film.poster_path !== null">
+                      <img :src="'https://image.tmdb.org/t/p/' + 'w300/' + film.poster_path" :alt="film.title">
+                  </div>
+                  <div v-else>Copertina non disponibile</div>
                   <h3>{{ film.title }}</h3>
                   <h4>{{ film.original_title }}</h4>
                   <p>{{ film.original_language }}</p>
@@ -35,6 +39,9 @@ export default {
                 padding: 0.5rem;
                 border:1px solid #999;
                 text-align: center;
+                img{
+                    width:100%;
+                }
             }
         }
     }
