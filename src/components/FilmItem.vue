@@ -1,9 +1,9 @@
 <template>
-  <div>
-        <div v-if="film.poster_path !== null">
+  <div :style="backgroundImageInlineStyle">
+        <!--div v-if="film.poster_path !== null">
             <img :src="'https://image.tmdb.org/t/p/' + 'w342/' + film.poster_path" :alt="film.title">
         </div>
-        <div v-else>Copertina non disponibile</div>
+        <div v-else>Copertina non disponibile</div-->
         <h3>{{ film.title }}</h3>
         <h4>{{ film.original_title }}</h4>
         <p>{{ film.vote_average }}</p>
@@ -20,6 +20,11 @@ export default {
     props:{
         film:Object
     },
+    computed:{
+        backgroundImageInlineStyle(){
+            return `background-image: url('https://image.tmdb.org/t/p/' + 'w342/' + ${this.film.poster_path})`;
+        }
+    },
     components:{
         FlagComponent,
         StarsComponent
@@ -28,7 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
  img{
      width:100%;
  }

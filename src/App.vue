@@ -75,7 +75,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
    background-color:black;
-   height:100vh;
+   height:100vh;  //dev'essere una web app ossia non deve scrollare lungo la viewport
    display:flex;
    flex-direction:column;
 }
