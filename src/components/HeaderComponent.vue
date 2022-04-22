@@ -26,6 +26,7 @@ data(){
     background-color:black;
     max-width:1200px;
     margin: 0 auto;
+    padding:30px;
     .header{
             display:flex;
             justify-content: space-between;

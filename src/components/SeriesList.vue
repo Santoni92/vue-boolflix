@@ -4,10 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="card" v-for="serieTv in series" :key="serieTv.id">
-                <h3>{{ serieTv.name }}</h3>
-                <h4>{{ serieTv.original_name }}</h4>
-                <p>{{ serieTv.original_language }}</p>
-                <p>{{ serieTv.vote_average }}</p>
+                <SerieItem :serieTv="serieTv"/>
             </div>
         </div>
     </div>
@@ -15,10 +12,14 @@
 </template>
 
 <script>
+import SerieItem from './SerieItem.vue'
 export default {
     name:'SeriesList',
     props:{
         series:Array
+    },
+    components:{
+        SerieItem
     }
 }
 </script>

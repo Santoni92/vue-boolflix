@@ -6,27 +6,23 @@
         <div v-else>Copertina non disponibile</div>
         <h3>{{ film.title }}</h3>
         <h4>{{ film.original_title }}</h4>
-        <p>{{ film.original_language }}</p>
         <p>{{ film.vote_average }}</p>
         <FlagComponent :flags="film.original_language"/>
-        <div class="stellette">
-            <div v-for="m in 5" :key="m">
-                <div v-if="m < Math.ceil(film.vote_average / 2)"><i class="fa-solid fa-star"></i></div>
-                <div v-else><i class="fa-regular fa-star"></i></div>
-            </div>
-        </div>
+        <StarsComponent :voto="film.vote_average"/>
   </div>
 </template>
 
 <script>
 import FlagComponent from './FlagComponent.vue'
+import StarsComponent from './StarsComponent.vue'
 export default {
     name:'FilmItem',
     props:{
         film:Object
     },
     components:{
-        FlagComponent
+        FlagComponent,
+        StarsComponent
     }
 }
 </script>
@@ -36,8 +32,4 @@ export default {
  img{
      width:100%;
  }
-.stellette{
-            display:flex;
-            justify-content: center;
-         }
 </style>
