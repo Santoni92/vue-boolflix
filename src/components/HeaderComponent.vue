@@ -23,7 +23,7 @@ data(){
 
 <style lang="scss" scoped>
 .container{
-    background-color:black;
+    width:100%;
     max-width:1200px;
     margin: 0 auto;
     padding:30px;

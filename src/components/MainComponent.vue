@@ -25,5 +25,7 @@ export default {
 <style scoped>
 main{
   background-color: darkgray;
+  flex-grow:1;
+  overflow-y:auto;
 }
 </style>
